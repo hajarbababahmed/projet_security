@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de Bord - Gestion des Tâches</title>
+  <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+  <header>
+    <button onclick="window.location.href='/logout'">Déconnexion</button>
+  </header>
+
+  <div class="task-container">
+    <h2>Vos Tâches</h2>
+    <ul id="taskList">
+      
+    </ul>
+  </div>
+
+  <div class="add-task">
+    <h3>Ajouter une Nouvelle Tâche</h3>
+    <form id="addTaskForm">
+      <input type="text" id="taskInput" placeholder="Entrez une nouvelle tâche" required />
+      <button type="submit">Ajouter</button>
+      
+    </form>
+  </div>
+
+  <script src="/public/dashboard.js"></script>
+</body>
+</html>

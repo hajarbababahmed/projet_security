@@ -1,0 +1,82 @@
+{
+  "users": [
+    {
+      "username": "user1",
+      "password": "password1"
+    },
+    {
+      "username": "user2",
+      "password": "password2"
+    },
+    {
+      "username": "hajar",
+      "password": "hajar1"
+    },
+    {
+      "username": "dalal",
+      "password": "1212"
+    },
+    {
+      "username": "soukaina",
+      "password": "1"
+    },
+    {
+      "username": "fatiha",
+      "password": "12"
+    },
+    {
+      "username": "hind",
+      "password": "13"
+    },
+    {
+      "username": "houda",
+      "password": "1234"
+    },
+    {
+      "username": "ahmed",
+      "password": "12345"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1674220800000,
+      "task": "Buy groceries",
+      "user": "user1"
+    },
+    {
+      "id": 1674220810000,
+      "task": "Read a book",
+      "user": "user1"
+    },
+    {
+      "id": 1674220820000,
+      "task": "Complete project",
+      "user": "user2"
+    },
+    {
+      "id": 1674220830000,
+      "task": "Plan vacation",
+      "user": "user2"
+    },
+    {
+      "id": 1738030367315,
+      "task": "somewher",
+      "user": "ahmed"
+    },
+    {
+      "id": 1738030369155,
+      "task": "somewher",
+      "user": "ahmed"
+    },
+    {
+      "id": 1738031441399,
+      "task": "somewhere",
+      "user": "ahmed"
+    },
+    {
+      "id": 1738036988163,
+      "task": "cooking",
+      "user": "ahmed"
+    }
+  ]
+}
