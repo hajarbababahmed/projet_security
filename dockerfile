@@ -11,14 +11,17 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 
 # Installer le client Python de ZAP
-RUN pip3 install --break-system-packages python-owasp-zap-v2.4
+RUN pip3 install python-owasp-zap-v2.4
 
-# Télécharger et exécuter le script d'installation de ZAP
-RUN wget --no-check-certificate https://github.com/zaproxy/zaproxy/releases/download/v2.14.0/ZAP_2_14_0_unix.sh && \
-    chmod +x ZAP_2_14_0_unix.sh && \
-    mkdir -p /opt/zap && \
-    ./ZAP_2_14_0_unix.sh -q -dir /opt/zap && \
-    rm ZAP_2_14_0_unix.sh
+# Télécharger et installer ZAP (version stable actuelle)
+RUN wget -qO- https://github.com/zaproxy/zaproxy/releases/download/v2.14.0/ZAP_Linux.tar.gz | \
+    tar xvz -C /opt && \
+    mv /opt/ZAP_* /opt/zap
+
+# Alternative si le téléchargement direct échoue:
+# RUN wget -qO- https://github.com/zaproxy/zaproxy/releases/latest/download/ZAP_Linux.tar.gz | \
+#     tar xvz -C /opt && \
+#     mv /opt/ZAP_* /opt/zap
 
 ENV PATH="/opt/zap:$PATH"
 
