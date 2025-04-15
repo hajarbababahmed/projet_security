@@ -1,6 +1,6 @@
 FROM node:20
 
-# Installer les dépendances système nécessaires à ZAP
+# Installer les dépendances nécessaires
 RUN apt-get update && apt-get install -y \
     wget \
     openjdk-17-jre \
@@ -10,18 +10,19 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     && apt-get clean
 
-# Installer le client Python OWASP ZAP
+# Installer le client Python de ZAP
 RUN pip3 install --break-system-packages python-owasp-zap-v2.4
 
-# Télécharger et extraire ZAP dans /opt/zap
-RUN wget --no-check-certificate https://github.com/zaproxy/zaproxy/releases/download/v2.14.0/ZAP_2.14.0_unix.tar.gz && \
+# Télécharger et exécuter le script d'installation de ZAP
+RUN wget --no-check-certificate https://github.com/zaproxy/zaproxy/releases/download/v2.14.0/ZAP_2_14_0_unix.sh && \
+    chmod +x ZAP_2_14_0_unix.sh && \
     mkdir -p /opt/zap && \
-    tar -xvzf ZAP_2.14.0_unix.tar.gz -C /opt/zap --strip-components=1 && \
-    rm ZAP_2.14.0_unix.tar.gz
+    ./ZAP_2_14_0_unix.sh -q -dir /opt/zap && \
+    rm ZAP_2_14_0_unix.sh
 
 ENV PATH="/opt/zap:$PATH"
 
-# Installer l'app Node.js
+# Déploiement de l'app Node.js
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
