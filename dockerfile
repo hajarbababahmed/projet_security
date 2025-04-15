@@ -15,13 +15,20 @@ RUN apt-get update && apt-get install -y \
 RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
-# Installer le client Python de ZAP dans l'environnement virtuel
+# Installer le client Python de ZAP
 RUN pip install python-owasp-zap-v2.4
 
-# Télécharger et installer ZAP (version stable)
-RUN wget -qO- https://github.com/zaproxy/zaproxy/releases/download/v2.14.0/ZAP_Linux.tar.gz | \
-    tar xvz -C /opt && \
-    mv /opt/ZAP_* /opt/zap
+# Télécharger et installer ZAP - version alternative plus stable
+RUN wget https://github.com/zaproxy/zaproxy/releases/download/v2.14.0/ZAP_2.14.0_Linux.tar.gz -O /tmp/zap.tar.gz && \
+    mkdir -p /opt/zap && \
+    tar -xzf /tmp/zap.tar.gz -C /opt/zap --strip-components=1 && \
+    rm /tmp/zap.tar.gz
+
+# Alternative si la version ci-dessus ne fonctionne pas:
+# RUN wget https://github.com/zaproxy/zaproxy/releases/latest/download/ZAP_Linux.tar.gz -O /tmp/zap.tar.gz && \
+#     mkdir -p /opt/zap && \
+#     tar -xzf /tmp/zap.tar.gz -C /opt/zap --strip-components=1 && \
+#     rm /tmp/zap.tar.gz
 
 ENV PATH="/opt/zap:$PATH"
 
