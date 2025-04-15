@@ -18,8 +18,8 @@ ENV PATH="/opt/venv/bin:$PATH"
 # Installer le client Python de ZAP
 RUN pip install python-owasp-zap-v2.4
 
-# Télécharger et installer ZAP - Utilisation du lien stable
-RUN wget https://github.com/zaproxy/zaproxy/releases/latest/download/ZAP_Linux.tar.gz -O /tmp/zap.tar.gz && \
+# Télécharger et installer ZAP - Version 2.16.1 (lien fixe)
+RUN wget https://github.com/zaproxy/zaproxy/releases/download/v2.16.1/ZAP_2.16.1_Linux.tar.gz -O /tmp/zap.tar.gz && \
     mkdir -p /opt/zap && \
     tar -xzf /tmp/zap.tar.gz -C /opt/zap --strip-components=1 && \
     rm /tmp/zap.tar.gz
