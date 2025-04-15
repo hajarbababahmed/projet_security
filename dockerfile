@@ -4,9 +4,10 @@ FROM node:20
 RUN apt-get update && apt-get install -y \
     default-jre \
     curl \
-    && curl -fsSL https://github.com/zaproxy/zaproxy/releases/download/v2.11.1/ZAP_2.11.1_Unix.tar.gz -o /tmp/zap.tar.gz \
+    && curl -L -o /tmp/zap.tar.gz https://github.com/zaproxy/zaproxy/releases/download/v2.11.1/ZAP_2.11.1_unix.tar.gz \
     && tar -xvzf /tmp/zap.tar.gz -C /opt \
     && ln -s /opt/ZAP_2.11.1/zap-baseline.py /usr/local/bin/zap-baseline.py
+
 
 WORKDIR /app
 
